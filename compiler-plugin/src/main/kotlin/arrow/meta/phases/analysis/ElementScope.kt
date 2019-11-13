@@ -78,9 +78,9 @@ interface ElementScope {
   
   val String.typeArgument: Scope<KtTypeProjection>
   
-  val String.type: Scope<KtTypeReference>
+  val String.type: TypeReferenceScope
   
-  val KtTypeElement.type: Scope<KtTypeReference>
+  val KtTypeElement.type: TypeReferenceScope
   
   val String.typeOrNull: Scope<KtTypeReference>
   
