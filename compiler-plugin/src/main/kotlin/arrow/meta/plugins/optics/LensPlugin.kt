@@ -5,11 +5,11 @@ import arrow.meta.Plugin
 import arrow.meta.invoke
 import arrow.meta.phases.CompilerContext
 import arrow.meta.phases.analysis.ElementScope
-import arrow.meta.quotes.ClassScope
+import arrow.meta.quotes.parentscopes.ClassScope
 import arrow.meta.quotes.Scope
 import arrow.meta.quotes.Transform
 import arrow.meta.quotes.ScopedList
-import arrow.meta.quotes.classOrObject
+import arrow.meta.quotes.`class`
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtClassBody
@@ -24,7 +24,7 @@ val Meta.lenses: Plugin
   get() =
     "lenses" {
       meta(
-        classOrObject(::isProductType) { c ->
+        `class`(::isProductType) { c ->
 
           val location = c.toSourceElement().safeAs<KotlinSourceElement>()?.psi?.textRange
 

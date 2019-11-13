@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.psi.psiUtil.getValueParameters
 import org.jetbrains.kotlin.psi.psiUtil.modalityModifierType
 import org.jetbrains.kotlin.psi.psiUtil.visibilityModifierType
 
-fun Meta.classOrObject(
+fun Meta.`class`(
   match: KtClass.() -> Boolean,
   map: ClassScope.(KtClass) -> Transform<KtClass>
 ): ExtensionPhase =
