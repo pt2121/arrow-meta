@@ -8,6 +8,9 @@ import org.jetbrains.kotlin.psi.KtOperationReferenceExpression
 
 /**
  * A template destructuring [Scope] for a [KtBinaryExpression]
+ *
+ * @param match designed to to feed in any kind of [KtBinaryExpression] predicate returning a [Boolean]
+ * @param map a function that maps over the resulting action from matching on the transformation at the PSI level.
  */
 fun Meta.binaryExpression(
   match: KtBinaryExpression.() -> Boolean,
