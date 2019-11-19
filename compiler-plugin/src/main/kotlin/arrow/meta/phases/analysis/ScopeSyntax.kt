@@ -19,4 +19,9 @@ interface ScopeSyntax {
      * Given [A] is a sub type of [B], re-type this value from Scope<A> to Scope<B>.
      */
     fun <A : B, B : KtElement> Scope<A>.widen(): Scope<B>
+
+    /**
+     * fold on Scope using the provided function f.
+     */
+    fun Scope<KtElement>.fold(a0: KtElement, f: (KtElement, KtElement) -> KtElement): KtElement
 }
