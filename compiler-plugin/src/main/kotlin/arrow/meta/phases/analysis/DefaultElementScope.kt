@@ -121,6 +121,18 @@ class DefaultElementScope(project: Project) : ElementScope {
 
   override fun <A : B, B : KtElement> Scope<A>.widen(): Scope<B> = this
 
+  override fun Scope<KtElement>.fold(a0: KtElement, f: (KtElement, KtElement) -> KtElement): KtElement =
+          value?.let { v ->
+            val acc = f(a0, v)
+            v.acceptChildren(object : KtTreeVisitorVoid() {
+              override fun visitKtElement(element: KtElement) {
+                acc.add(f(acc, element))
+                super.visitKtElement(element)
+              }
+            })
+            acc
+          } ?: a0
+
   override fun property(modifiers: String?, name: String, type: String?, isVar: Boolean, initializer: String?): Scope<KtProperty> =
     Scope(delegate.createProperty(modifiers, name, type, isVar, initializer))
 
