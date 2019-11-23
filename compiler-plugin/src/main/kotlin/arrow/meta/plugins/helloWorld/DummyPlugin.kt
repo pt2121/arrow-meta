@@ -5,6 +5,7 @@ import arrow.meta.Plugin
 import arrow.meta.invoke
 import arrow.meta.quotes.Transform
 import arrow.meta.quotes.namedFunction
+import arrow.meta.quotes.scope
 
 val Meta.helloWorld: Plugin
     get() =
@@ -17,16 +18,13 @@ val Meta.helloWorld: Plugin
                                 """ |fun helloWorld(): Unit = 
                                     |  println("Hello ΛRROW Meta!")
                                     |""".function
-                                        .map {
-                                            """
-                                                val x = 10
-                                            """.property.value!!
-                                        }
-                                        .`as`(
-                                            """
-                                                val x = 10
-                                            """.property.value!!
-                                        )
+                                        .fold(
+                                                """ |fun helloWorld(): Unit = 
+                                                |  println("Hello ΛRROW Meta!")
+                                                |""".function.value
+                                        ) { _, func ->
+                                            func
+                                        }.scope()
                                         .synthetic
                         )
                     }

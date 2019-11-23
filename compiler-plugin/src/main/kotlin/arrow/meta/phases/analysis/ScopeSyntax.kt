@@ -23,5 +23,5 @@ interface ScopeSyntax {
     /**
      * fold on Scope using the provided function f.
      */
-    fun Scope<KtElement>.fold(a0: KtElement, f: (KtElement, KtElement) -> KtElement): KtElement
+    fun <A : KtElement, B : KtElement> Scope<A>.fold(b: B, f: (B, A) -> B): B
 }

@@ -14,12 +14,12 @@ class DummyTest {
       | fun helloWorld(): Unit = TODO()
       | 
       | fun main(args: Array<String>) {
-      |   println(x)
+      |   helloWorld()
       | }
       """
     }
 
-    /*@Test
+    @Test
     fun `simple case`() {
         assertThis(CompilerTest(
                 config = { metaDependencies },
@@ -32,7 +32,7 @@ class DummyTest {
           | //meta: <date>
           | 
           | @arrow.synthetic fun helloWorld(): Unit =
-          |   println("Hi Meta!")
+          |   println("Hello ΛRROW Meta!")
           | 
           | fun main(args: Array<String>) {
           |     helloWorld()
@@ -41,28 +41,28 @@ class DummyTest {
           """.source))
                 }
         ))
-    }*/
-
-    @Test
-    fun `simple 2`() {
-        assertThis(CompilerTest(
-                config = { metaDependencies },
-                code = { TESTS.source },
-                assert = {
-                    allOf(quoteOutputMatches(
-                            """
-          | import arrow.higherkind
-          | 
-          | //meta: <date>
-          | 
-          | @arrow.synthetic val x = 10
-          | 
-          | fun main(args: Array<String>) {
-          |     println(x)
-          | }
-          | 
-          """.source))
-                }
-        ))
     }
+
+//    @Test
+//    fun `simple 2`() {
+//        assertThis(CompilerTest(
+//                config = { metaDependencies },
+//                code = { TESTS.source },
+//                assert = {
+//                    allOf(quoteOutputMatches(
+//                            """
+//          | import arrow.higherkind
+//          |
+//          | //meta: <date>
+//          |
+//          | @arrow.synthetic val x = 10
+//          |
+//          | fun main(args: Array<String>) {
+//          |     println(x)
+//          | }
+//          |
+//          """.source))
+//                }
+//        ))
+//    }
 }
