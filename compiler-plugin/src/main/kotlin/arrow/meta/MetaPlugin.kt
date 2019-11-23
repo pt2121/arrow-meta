@@ -6,6 +6,7 @@ import arrow.meta.plugins.higherkind.higherKindedTypes
 import arrow.meta.plugins.optics.lenses
 import arrow.meta.plugins.typeclasses.typeClasses
 import arrow.meta.plugins.union.unionTypes
+import arrow.meta.plugins.helloWorld.helloWorld
 import kotlin.contracts.ExperimentalContracts
 
 /**
@@ -22,6 +23,7 @@ open class MetaPlugin : Meta {
       higherKindedTypes,
       typeClasses,
       comprehensions,
-      lenses
+      lenses,
+      helloWorld
     )
 }
