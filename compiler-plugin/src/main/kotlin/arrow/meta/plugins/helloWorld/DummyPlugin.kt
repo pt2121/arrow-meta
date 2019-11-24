@@ -15,11 +15,17 @@ val Meta.helloWorld: Plugin
                         Transform.replace(
                                 replacing = c,
                                 newDeclaration =
-                                """ |fun helloWorld(): Unit = 
+
+//                                """println("Hello ΛRROW Meta!")""".expression
+//                                        .map { exp ->
+//                                            """ fun ${this.name}(): Unit = ${exp.text}""".function.value
+//                                        }.synthetic
+
+                                """ |fun helloWorld(): Unit =
                                     |  println("Hello ΛRROW Meta!")
                                     |""".function
                                         .fold(
-                                                """ |fun helloWorld(): Unit = 
+                                                """ |fun helloWorld(): Unit =
                                                 |  println("Hello ΛRROW Meta!")
                                                 |""".function.value
                                         ) { _, func ->
