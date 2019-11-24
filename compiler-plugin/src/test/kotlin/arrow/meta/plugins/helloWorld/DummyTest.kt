@@ -31,7 +31,7 @@ class DummyTest {
           | 
           | //meta: <date>
           | 
-          | @arrow.synthetic fun helloWorld(): Unit =
+          | @arrow.synthetic private fun helloWorld(): Unit =
           |   println("Hello ΛRROW Meta!")
           | 
           | fun main(args: Array<String>) {

@@ -21,15 +21,15 @@ val Meta.helloWorld: Plugin
 //                                            """ fun ${this.name}(): Unit = ${exp.text}""".function.value
 //                                        }.synthetic
 
-                                """ |fun helloWorld(): Unit =
-                                    |  println("Hello ΛRROW Meta!")
-                                    |""".function
+                                """private""".modifierList
                                         .fold(
                                                 """ |fun helloWorld(): Unit =
                                                 |  println("Hello ΛRROW Meta!")
                                                 |""".function.value
-                                        ) { _, func ->
-                                            func
+                                        ) { acc, mod ->
+                                            """ ${mod.text} fun ${acc.name}(): Unit =
+                                                ${acc.bodyExpression?.text.orEmpty()}
+                                            """.trimIndent().function.value
                                         }.scope()
                                         .synthetic
                         )
